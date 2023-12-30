@@ -1,0 +1,194 @@
+#root {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #353535;
+}
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+@keyframes hovered {
+  from {
+    transform: scale(1);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem aliceblue);
+  }
+  to {
+    transform: scale(1.01);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem #070707);
+  }
+}
+@keyframes iconHover {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ballBounce {
+  0% {
+    margin-top: 6px;
+    margin-bottom: 94px;
+  }
+
+  10% {
+    margin-top: 7px;
+    margin-bottom: 93px;
+  }
+  20% {
+    margin-top: 15px;
+    margin-bottom: 85px;
+  }
+  30% {
+    margin-top: 25px;
+    margin-bottom: 75px;
+  }
+  40% {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  50% {
+    margin-top: 100px;
+    margin-bottom: 0px;
+  }
+  60% {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  70% {
+    margin-top: 25px;
+    margin-bottom: 75px;
+  }
+  80% {
+    margin-top: 15px;
+    margin-bottom: 85px;
+  }
+  90% {
+    margin-top: 7px;
+    margin-bottom: 93px;
+  }
+  100% {
+    margin-top: 6px;
+    margin-bottom: 94px;
+  }
+}
+@keyframes bookRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(45deg);
+  }
+  20% {
+    transform: rotate(110deg);
+  }
+  30% {
+    transform: rotate(186deg);
+  }
+  40% {
+    transform: rotate(273deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  60% {
+    transform: rotate(447deg);
+  }
+  70% {
+    transform: rotate(534deg);
+  }
+  80% {
+    transform: rotate(610deg);
+  }
+  90% {
+    transform: rotate(675deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+.bookPic {
+  opacity: 0;
+  cursor: crosshair;
+  animation: bookRotate 2s infinite linear;
+}
+.leftSide {
+  color: rgb(255, 255, 255);
+  padding-left: 5%;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-family: Silkscreen;
+}
+.white-circle {
+  margin-top: 6px;
+  margin-bottom: 94px;
+  flex-direction: row;
+  display: flex;
+  width: 40vw;
+  justify-content: center;
+  animation: ballBounce 2s infinite linear;
+}
+.inputContainer {
+  padding-bottom: 5%;
+}
+.loginButton {
+  font-size: larger;
+}
+.loginButton:hover {
+  animation: hovered 0.2s both ease-in-out;
+}
+.icon:hover {
+  animation: iconHover 2s both linear;
+}
+.icon:active {
+  animation: iconHover 0.1s infinite linear;
+}
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 40vw;
+  background-color: aliceblue;
+  box-shadow: inset 0 0 2rem #070707;
+}
+.quote {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.welcome {
+  font-size: 1rem;
+  font-weight: bolder;
+  text-shadow: 0 0 3rem #cfcfcf;
+  font-family: Silkscreen;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+.errorMessage {
+  width: 30vw;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bolder;
+  text-shadow: 0 0 3rem #cfcfcf;
+  font-family: Pixelify Sans;
+  margin-bottom: 2rem;
+}
+.loginBox h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  text-shadow: 0 0 3rem #353535;
+  font-family: Silkscreen;
+  margin-bottom: 2rem;
+  color: #353535;
+}

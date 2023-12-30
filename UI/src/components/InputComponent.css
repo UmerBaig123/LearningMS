@@ -1,0 +1,33 @@
+.button {
+  color: #070707;
+  margin-left: 20px;
+  cursor: pointer;
+}
+@keyframes button {
+  from {
+    transform: scale(1);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem aliceblue);
+  }
+  to {
+    transform: scale(1.1);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem #070707);
+  }
+}
+@keyframes input {
+  from {
+    border: 1px solid #353535;
+    transform: scale(1);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem aliceblue);
+  }
+  to {
+    border: 1px solid #353535;
+    transform: scale(1.01);
+    filter: drop-shadow(0.3rem 0.3rem 0.35rem #070707);
+  }
+}
+.button:hover {
+  animation: button 0.2s both ease-in-out;
+}
+.input:hover {
+  animation: input 0.2s both ease-in-out;
+}

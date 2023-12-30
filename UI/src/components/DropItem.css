@@ -1,0 +1,18 @@
+.dropItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Silkscreen;
+  justify-content: center;
+  height: 42px;
+  cursor: pointer;
+  transition: height 100ms;
+}
+.dropItem:hover {
+  background-color: rgba(224, 224, 224, 0.5);
+}
+.line {
+  height: 1px;
+  background-color: black;
+  opacity: 0.2;
+}

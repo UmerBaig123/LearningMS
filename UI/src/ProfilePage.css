@@ -1,0 +1,44 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.profileContainer {
+  animation: fadeIn 0.5s both linear;
+}
+.userName {
+  font-size: 50px;
+  font-weight: bold;
+  color: #000000;
+  font-family: Pixelify Sans;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Data {
+  font-size: 30px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #000000;
+  font-family: Pixelify Sans;
+}
+
+.edit {
+  width: 50px;
+  height: 50px;
+  margin-left: 15vw;
+}
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #000000;
+  font-family: Silkscreen;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,110 @@
+.topBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  /* border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px; */
+  height: 9vh;
+  width: 100%;
+  padding: 0 10px;
+  box-shadow: 0 0 2rem rgb(194, 194, 194);
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  margin-top: 9vh;
+  height: 91vh;
+  align-items: "center";
+}
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 20vw;
+  border-radius: 5px;
+  margin: 10px 20px;
+}
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 79vw;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+.user {
+  height: 7vh;
+  align-items: center;
+  font-family: Silkscreen;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+}
+.user:hover {
+  filter: drop-shadow(0 0 3rem rgb(0, 0, 0));
+}
+.menu {
+  height: 20px;
+  width: 20px;
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+.menuItems {
+  position: absolute;
+  align-items: center;
+  margin-left: 29vw;
+  margin-top: 36vh;
+  box-shadow: 0 0 2rem rgb(0, 0, 0);
+  width: 11vw;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 187px;
+}
+@keyframes iconHover {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.searchBar {
+  height: 5vh;
+  font-size: large;
+  font-family: Pixelify Sans;
+  background-color: #ffffff;
+  border-width: 5px;
+  color: #000000;
+  border-radius: 13px;
+}
+.leftMenu {
+  width: 40vw;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+.menu:hover {
+  filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+  animation: iconHover 0.2s both linear;
+}
