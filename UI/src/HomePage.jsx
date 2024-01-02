@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocalStorage } from "./functions/useLocalStorage";
 import { FaBars } from "react-icons/fa";
 import DropItem from "./components/DropItem";
+import CoursesPage from "./CoursesPage";
 import TabsItem from "./components/tabsItem";
 import "./Homepage.css";
 import ProfilePage from "./ProfilePage";
@@ -234,11 +235,8 @@ function Homepage() {
                 userData.type == "admin" ? "#91a8c7" : "rgba(96, 176, 105, 1)",
             }}
           >
-            {currentPage == "Profile" ? (
-              <ProfilePage userData={userData} />
-            ) : (
-              <></>
-            )}
+            {currentPage == "Profile" && <ProfilePage userData={userData} />}
+            {currentPage == "Courses" && <CoursesPage userData={userData} />}
           </div>
         </div>
       </div>
