@@ -25,6 +25,34 @@ app.get("/api/Users/Users", multer().none(), (req, res) => {
       res.send(result.filter((x) => x.userName == req.query.userName));
     });
 });
+
+app.get("/api/Users/Courses", (req, res) => {
+  database
+    .collection("StudentCourses")
+    .find({})
+    .toArray((error, result) => {
+      res.send(result);
+    });
+});
+
+app.post("/api/Users/AddCourse", multer().none(), (req, res) => {
+  database.collection("StudentCourses").count({}, function (err, numOfDocs) {
+    database.collection("StudentCourses").insertOne(
+      {
+        id: numOfDocs + 1,
+        courseName: req.body.courseName,
+        userName: req.body.userName,
+        courseGrade: req.body.courseGrade,
+      },
+      (error, result) => {
+        if (error) {
+          return res.status(500).send(error);
+        }
+        res.send("result.result");
+      }
+    );
+  });
+});
 app.post("/api/Users/Auth", multer().none(), (req, res) => {
   database
     .collection("Users")
