@@ -6,9 +6,8 @@ const ProfilePage = ({ userData }) => {
     <div
       className="profileContainer"
       style={{
-        width: "100%",
-        height: "100%",
-        opacity: 0,
+        width: "97%",
+        height: "87%",
         flexDirection: "column",
         alignItems: "center",
         display: "flex",
@@ -27,11 +26,13 @@ const ProfilePage = ({ userData }) => {
         <img
           src={userData.photoURL}
           style={{
-            width: 70,
-            height: 70,
+            width: 60,
+            height: 60,
             borderRadius: 20,
             border: "solid 5px black",
             marginRight: 30,
+            cursor: "pointer",
+            pointerEvents: "",
           }}
         />
         <div className="userName">{userData.name}</div>
@@ -65,7 +66,7 @@ const ProfilePage = ({ userData }) => {
       >
         <div className="title">Gender:</div>
         <div
-          style={{ color: userData.gender == "M" ? "blue" : "pink" }}
+          style={{ color: userData.gender == "M" ? "blue" : "#ff7a7a" }}
           className="Data"
         >
           {userData.gender == "M" ? "Male" : "Female"}

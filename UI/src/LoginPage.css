@@ -147,12 +147,6 @@
 .loginButton:hover {
   animation: hovered 0.2s both ease-in-out;
 }
-.icon:hover {
-  animation: iconHover 2s both linear;
-}
-.icon:active {
-  animation: iconHover 0.1s infinite linear;
-}
 .loginBox {
   display: flex;
   flex-direction: column;
