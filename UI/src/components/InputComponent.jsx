@@ -6,19 +6,15 @@ import "./InputComponent.css";
 const InputComponent = ({ type, placeholder, setval, hidden, focused }) => {
   const [isHidden, setIsHidden] = useState(hidden);
   const inputStyles = {
-    padding: "10px",
-    fontSize: "26px",
-    border: "1px solid #ccc",
+    fontSize: "30px",
+    border: "0px solid #ccc",
     fontFamily: "Pixelify Sans",
     fontWeight: "bold",
-    borderRadius: "10px",
-    outline: "none",
     width: hidden ? "342px" : "400px",
-    marginBottom: "10px",
   };
 
   return (
-    <div style={{ flexDirection: "row" }}>
+    <div style={{ flexDirection: "row", margin: 15 }}>
       <input
         onFocus={focused}
         type={hidden ? (isHidden ? "password" : "text") : type}
