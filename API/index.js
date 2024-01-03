@@ -41,14 +41,14 @@ app.post("/api/Users/AddCourse", multer().none(), (req, res) => {
       {
         id: numOfDocs + 1,
         courseName: req.body.courseName,
-        userName: req.body.userName,
-        courseGrade: req.body.courseGrade,
+        creditHours: req.body.creditHours,
+        photoURL: req.body.photoURL,
       },
       (error, result) => {
         if (error) {
           return res.status(500).send(error);
         }
-        res.send("result.result");
+        res.send(result.result);
       }
     );
   });

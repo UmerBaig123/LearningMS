@@ -30,7 +30,18 @@ const CoursesPage = ({ userData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShow(false);
-    console.log(formData);
+    setCourses([...courses, fData]);
+    const data = new FormData();
+    data.append("courseName", fData.courseName);
+    data.append("creditHours", fData.creditHours);
+    data.append("photoURL", fData.photoURL);
+    const options = {
+      method: "POST",
+      body: data,
+    };
+    fetch("http://localhost:3000/api/Users/AddCourse", options).then((res) =>
+      setFormData({})
+    );
   };
 
   return (

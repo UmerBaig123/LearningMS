@@ -27,6 +27,8 @@
   pointer-events: fill;
 }
 .modal {
+  outline: none;
+  animation: fadeIn 0.5s both linear;
   position: fixed;
   bottom: 8vh;
   right: 35vw;
@@ -36,8 +38,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  pointer-events: fill;
+  pointer-events: auto;
+  justify-content: space-evenly;
   --pixel-bg: #474747; /* Inner background color */
 
   --pixel-border: black; /* Inner border color: */
@@ -99,4 +101,52 @@
     0 calc(var(--pixel) * 12) 0 calc(var(--pixel) * -4) var(--pixel-border-3),
     0 calc(var(--pixel) * -15) 0 calc(var(--pixel) * -6) var(--pixel-border-3),
     0 calc(var(--pixel) * 15) 0 calc(var(--pixel) * -6) var(--pixel-border-3);
+}
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  aspect-ratio: 1/1;
+  margin-right: 15px;
+  cursor: pointer;
+  pointer-events: fill;
+}
+.closeButton:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 10px rgb(39, 39, 39));
+}
+.formContainer {
+  justify-self: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalInput {
+  width: 80%;
+  height: 20%;
+  border-radius: 10px;
+  font-family: VT323;
+  box-shadow: inset 0px 0px 8px 2px #000000;
+  outline: none;
+  background-color: #474747;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.submitbtn {
+  outline: none;
+  margin-top: 20px;
+  font-family: Silkscreen;
+  font-size: larger;
+  height: auto;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.submitbtn:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 10px rgb(39, 39, 39));
 }
