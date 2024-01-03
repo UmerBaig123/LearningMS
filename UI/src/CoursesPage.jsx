@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
+import ReactModal from "react-modal";
 import CourseItems from "./components/CourseItems";
 import "./CoursesPage.css";
 
 const CoursesPage = ({ userData }) => {
   const [courses, setCourses] = useState([]);
   const [show, setShow] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleClose = () => setShow(false);
+  const [fData, setFormData] = useState({});
+  const handleClose = () => {
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ const CoursesPage = ({ userData }) => {
 
   const handleChange = (e) => {
     setFormData({
-      ...formData,
+      ...fData,
       [e.target.name]: e.target.value,
     });
   };
@@ -49,29 +47,59 @@ const CoursesPage = ({ userData }) => {
             alt="add"
             className="addButton"
           />
-          {/* <div hidden={true} className="modal">
-            <form onSubmit={handleSubmit}>
+          <ReactModal
+            onRequestClose={handleClose}
+            shouldCloseOnOverlayClick={true}
+            isOpen={show}
+            className="modal"
+          >
+            <img
+              className="closeButton"
+              onClick={() => setShow(false)}
+              src="/Close.png"
+              alt="close"
+            />
+            <div style={{ fontFamily: "Silkscreen", fontSize: 40 }}>
+              Add Course
+            </div>
+            <div className="formContainer">
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  flexDirection: "column",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                }}
+              >
               <input
-                name="name"
+                  className="modalInput"
+                  name="courseName"
                 placeholder="Name"
-                value={formData.name}
+                  value={fData.name}
                 onChange={handleChange}
               />
               <input
-                name="CreditHours"
+                  className="modalInput"
+                  name="creditHours"
                 placeholder="Credit Hours"
-                value={formData.creditHours}
+                  value={fData.creditHours}
                 onChange={handleChange}
               />
               <input
-                name="photoUrl"
+                  className="modalInput"
+                  name="photoURL"
                 placeholder="photo URL"
-                value={formData.photoURL}
+                  value={fData.photoURL}
                 onChange={handleChange}
               />
-              <button type="submit">Submit</button>
+                <button className="submitbtn" type="submit">
+                  Submit
+                </button>
             </form>
-          </div> */}
+            </div>
+          </ReactModal>
         </>
       )}
     </div>
