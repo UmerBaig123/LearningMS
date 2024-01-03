@@ -28,7 +28,6 @@ const CoursesPage = ({ userData }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     setShow(false);
     setCourses([...courses, fData]);
     const data = new FormData();
@@ -47,7 +46,7 @@ const CoursesPage = ({ userData }) => {
   return (
     <div className="coursesPage">
       {courses.map((course) => {
-        return <CourseItems course={course} />;
+        return <CourseItems key={course.id} course={course} />;
       })}
 
       {userData.type === "admin" && (
@@ -84,31 +83,31 @@ const CoursesPage = ({ userData }) => {
                   gap: "10px",
                 }}
               >
-              <input
+                <input
                   className="modalInput"
                   name="courseName"
-                placeholder="Name"
+                  placeholder="Name"
                   value={fData.name}
-                onChange={handleChange}
-              />
-              <input
+                  onChange={handleChange}
+                />
+                <input
                   className="modalInput"
                   name="creditHours"
-                placeholder="Credit Hours"
+                  placeholder="Credit Hours"
                   value={fData.creditHours}
-                onChange={handleChange}
-              />
-              <input
+                  onChange={handleChange}
+                />
+                <input
                   className="modalInput"
                   name="photoURL"
-                placeholder="photo URL"
+                  placeholder="photo URL"
                   value={fData.photoURL}
-                onChange={handleChange}
-              />
+                  onChange={handleChange}
+                />
                 <button className="submitbtn" type="submit">
                   Submit
                 </button>
-            </form>
+              </form>
             </div>
           </ReactModal>
         </>

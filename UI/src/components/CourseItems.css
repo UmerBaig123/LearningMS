@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   color: #683403;
   cursor: pointer;
   margin-top: 5vh;
@@ -71,7 +71,7 @@
     0 calc(var(--pixel) * 15) 0 calc(var(--pixel) * -6) var(--pixel-border-3);
 }
 .name {
-  font-size: 40px;
+  margin-left: 6%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -80,6 +80,7 @@
   font-family: Silkscreen;
 }
 .ch {
+  margin-right: 6%;
   display: flex;
   font-family: VT323;
   flex-direction: row;

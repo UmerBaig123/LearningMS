@@ -4,7 +4,16 @@ const CourseItems = ({ course }) => {
     <div className="courseItems">
       <div className="name">
         <img width="50" height="50" src={course.photoURL} alt="minimum-value" />
-        {course.courseName}
+        <div
+          style={{
+            fontSize:
+              course.courseName.length > 8
+                ? (40 * 8) / course.courseName.length
+                : 40,
+          }}
+        >
+          {course.courseName}
+        </div>
       </div>
       <div className="ch">
         <div style={{ fontSize: 32 }}>Credit Hours :&nbsp;</div>{" "}
