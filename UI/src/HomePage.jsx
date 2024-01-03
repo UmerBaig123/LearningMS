@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocalStorage } from "./functions/useLocalStorage";
 import { FaBars } from "react-icons/fa";
 import DropItem from "./components/DropItem";
+import EmailPage from "./EmailPage";
 import CoursesPage from "./CoursesPage";
 import TabsItem from "./components/tabsItem";
 import "./Homepage.css";
@@ -11,7 +12,7 @@ function Homepage() {
   const [user, setUser] = useLocalStorage("user", "");
   const [userData, setUserData] = useState({});
   const [menu, setMenu] = useState(true);
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useLocalStorage("page", "");
   function openMenu() {
     if (menu) {
       setMenu(false);
@@ -237,6 +238,7 @@ function Homepage() {
           >
             {currentPage == "Profile" && <ProfilePage userData={userData} />}
             {currentPage == "Courses" && <CoursesPage userData={userData} />}
+            {currentPage == "Email" && <EmailPage userData={userData} />}
           </div>
         </div>
       </div>
