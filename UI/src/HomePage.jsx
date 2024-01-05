@@ -60,17 +60,20 @@ function Homepage() {
       }, 10);
     }
   }
+  const getUserData = () => {
+    fetch("http://localhost:3000/api/Users/Users?userName=" + user).then(
+      (response) => {
+        response.json().then((data) => {
+          setUserData(data[0]);
+        });
+      }
+    );
+  };
   useEffect(() => {
     if (!user) {
       window.location.href = "/";
     } else {
-      fetch("http://localhost:3000/api/Users/Users?userName=" + user).then(
-        (response) => {
-          response.json().then((data) => {
-            setUserData(data[0]);
-          });
-        }
-      );
+      getUserData();
     }
   }, [user]);
   return (
@@ -236,7 +239,9 @@ function Homepage() {
                 userData.type == "admin" ? "#91a8c7" : "rgba(96, 176, 105, 1)",
             }}
           >
-            {currentPage == "Profile" && <ProfilePage userData={userData} />}
+            {currentPage == "Profile" && (
+              <ProfilePage userData={userData} refresh={getUserData} />
+            )}
             {currentPage == "Courses" && <CoursesPage userData={userData} />}
             {currentPage == "Email" && <EmailPage userData={userData} />}
           </div>
