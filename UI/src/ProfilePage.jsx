@@ -1,102 +1,21 @@
-import { useEffect } from "react";
-import "./ProfilePage.css";
+import Profile from "./components/Profile";
+import ProfileEdit from "./components/ProfileEdit";
+import { useState } from "react";
 
-const ProfilePage = ({ userData }) => {
+const ProfilePage = ({ userData, refresh }) => {
+  const [editMode, setEditMode] = useState(false);
   return (
-    <div
-      className="profileContainer"
-      style={{
-        width: "97%",
-        height: "87%",
-        flexDirection: "column",
-        alignItems: "center",
-        display: "flex",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          flexDirection: "row",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: 30,
-        }}
-      >
-        <img
-          src={userData.photoURL}
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 20,
-            border: "solid 5px black",
-            marginRight: 30,
-            cursor: "pointer",
-            pointerEvents: "",
-          }}
+    <>
+      {editMode ? (
+        <ProfileEdit
+          userData={userData}
+          setEdit={setEditMode}
+          refresh={refresh}
         />
-        <div className="userName">{userData.name}</div>
-
-        <img
-          className="edit"
-          src="https://img.icons8.com/cotton/64/create-new--v3.png"
-          alt="edit"
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "95%",
-          marginLeft: "5%",
-        }}
-      >
-        <div className="title">User Name:</div>
-        <div className="Data">{userData.userName}</div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "95%",
-          marginLeft: "5%",
-        }}
-      >
-        <div className="title">Gender:</div>
-        <div
-          style={{ color: userData.gender == "M" ? "blue" : "#ff7a7a" }}
-          className="Data"
-        >
-          {userData.gender == "M" ? "Male" : "Female"}
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "95%",
-          marginLeft: "5%",
-        }}
-      >
-        <div className="title">Email:</div>
-        <div className="Data">{userData.email}</div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "95%",
-          marginLeft: "5%",
-        }}
-      >
-        <div className="title">Age:</div>
-        <div className="Data">{userData.age}</div>
-      </div>
-    </div>
+      ) : (
+        <Profile userData={userData} setEdit={setEditMode} />
+      )}
+    </>
   );
 };
 
