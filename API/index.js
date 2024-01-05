@@ -35,6 +35,24 @@ app.get("/api/Users/Courses", (req, res) => {
     });
 });
 
+app.post("/api/Users/UpdateUser", multer().none(), (req, res) => {
+  database.collection("UserData").updateOne(
+    { userName: req.body.userName },
+    {
+      $set: {
+        name: req.body.name,
+        gender: req.body.gender,
+        age: req.body.age,
+        email: req.body.email,
+        photoURL: req.body.photoURL,
+      },
+    },
+    (error, result) => {
+      res.send(result);
+    }
+  );
+});
+
 app.post("/api/Users/AddCourse", multer().none(), (req, res) => {
   database.collection("StudentCourses").count({}, function (err, numOfDocs) {
     database.collection("StudentCourses").insertOne(
