@@ -228,6 +228,7 @@ function Homepage() {
             }}
           >
             <TabsItem
+              selected={currentPage == "Profile"}
               title={"Profile"}
               onClick={() => {
                 setCurrentPage("Profile");
@@ -239,6 +240,7 @@ function Homepage() {
               }
             />
             <TabsItem
+              selected={currentPage == "Courses"}
               title={"Courses"}
               onClick={() => {
                 setCurrentPage("Courses");
@@ -248,6 +250,7 @@ function Homepage() {
               }
             />
             <TabsItem
+              selected={currentPage == "Tasks"}
               title={"Tasks"}
               onClick={() => {
                 setCurrentPage("Tasks");
@@ -257,6 +260,7 @@ function Homepage() {
               }
             />
             <TabsItem
+              selected={currentPage == "Email"}
               title={"Email"}
               onClick={() => {
                 setCurrentPage("Email");
