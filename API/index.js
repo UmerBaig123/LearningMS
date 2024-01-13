@@ -66,6 +66,22 @@ app.post("/api/Users/ChangePassword", multer().none(), (req, res) => {
     }
   );
 });
+app.get("/api/Users/GetEmails", (req, res) => {
+  database
+    .collection("UserData")
+    .find({})
+    .toArray((error, result) => {
+      res.send(result.map((x) => x.email));
+    });
+});
+app.get("/api/Users/GetTasks", multer().none(), (req, res) => {
+  database
+    .collection("Tasks")
+    .find({})
+    .toArray((error, result) => {
+      res.send(result);
+    });
+});
 app.post("/api/Users/AddTasks", multer().none(), (req, res) => {
   database.collection("Tasks").insertOne(
     {
@@ -115,6 +131,14 @@ app.post("/api/Users/AddCourse", multer().none(), (req, res) => {
       }
     );
   });
+});
+app.get("/api/Users/UserNames", multer().none(), (req, res) => {
+  database
+    .collection("Users")
+    .find({})
+    .toArray((error, result) => {
+      res.send(result.map((x) => x.userName));
+    });
 });
 app.post("/api/Users/Auth", multer().none(), (req, res) => {
   database
