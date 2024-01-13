@@ -52,6 +52,30 @@ app.post("/api/Users/UpdateUser", multer().none(), (req, res) => {
     }
   );
 });
+app.post("/api/Users/AddTasks", multer().none(), (req, res) => {
+  database.collection("Tasks").insertOne(
+    {
+      user: req.body.user,
+      name: req.body.name,
+      category: req.body.category,
+      deadline: req.body.deadline,
+      description: req.body.description,
+    },
+    (error, result) => {
+      if (error) {
+        return res.status(500).send(error);
+      }
+      res.send(result.result);
+    }
+  );
+});
+app.post("/api/Users/DeleteTask", multer().none(), (req, res) => {
+  database
+    .collection("Tasks")
+    .deleteOne({ _id: ObjectId(req.query._id) }, (error, result) => {
+      res.send(result);
+    });
+});
 app.post("/api/Users/DeleteCourse", multer().none(), (req, res) => {
   database
     .collection("StudentCourses")
