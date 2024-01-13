@@ -17,12 +17,38 @@
   overflow: auto;
   animation: fadeIn 0.5s both linear;
 }
+@keyframes shake {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(2px, 0px);
+  }
+  50% {
+    transform: translate(0px, 0px);
+  }
+  75% {
+    transform: translate(-2px, 0px);
+  }
+}
+.shake {
+  animation: shake 0.2s infinite linear;
+}
 .addButton {
   position: fixed;
   bottom: 5vh;
   right: 3.2vw;
   width: 50px;
   height: 50px;
+  cursor: pointer;
+  pointer-events: fill;
+}
+.deleteButton {
+  position: fixed;
+  bottom: 5vh;
+  right: 8vw;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   pointer-events: fill;
 }
@@ -101,6 +127,13 @@
     0 calc(var(--pixel) * 12) 0 calc(var(--pixel) * -4) var(--pixel-border-3),
     0 calc(var(--pixel) * -15) 0 calc(var(--pixel) * -6) var(--pixel-border-3),
     0 calc(var(--pixel) * 15) 0 calc(var(--pixel) * -6) var(--pixel-border-3);
+}
+.errorMsg {
+  font-size: 20px;
+  font-family: Pixelify Sans;
+  color: #ec2c2c;
+  text-shadow: -1px 1px 0 #310000, 1px 1px 0 #310000, 1px -1px 0 #310000,
+    -1px -1px 0 #310000;
 }
 .closeButton {
   position: absolute;

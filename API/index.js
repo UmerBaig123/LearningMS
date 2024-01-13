@@ -52,6 +52,13 @@ app.post("/api/Users/UpdateUser", multer().none(), (req, res) => {
     }
   );
 });
+app.post("/api/Users/DeleteCourse", multer().none(), (req, res) => {
+  database
+    .collection("StudentCourses")
+    .deleteOne({ _id: ObjectId(req.query._id) }, (error, result) => {
+      res.send(result);
+    });
+});
 
 app.post("/api/Users/AddCourse", multer().none(), (req, res) => {
   database.collection("StudentCourses").count({}, function (err, numOfDocs) {
