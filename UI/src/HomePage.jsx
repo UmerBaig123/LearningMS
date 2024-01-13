@@ -6,13 +6,53 @@ import DropItem from "./components/DropItem";
 import EmailPage from "./EmailPage";
 import CoursesPage from "./CoursesPage";
 import TabsItem from "./components/tabsItem";
+import ReactModal from "react-modal";
 import "./Homepage.css";
 import ProfilePage from "./ProfilePage";
 function Homepage() {
+  const [show, setShow] = useState(false);
+  const [oldPass, setOldPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [error, setError] = useState("");
   const [user, setUser] = useLocalStorage("user", "");
   const [userData, setUserData] = useState({});
   const [menu, setMenu] = useState(true);
   const [currentPage, setCurrentPage] = useLocalStorage("page", "");
+  const authenticate = () => {
+    const data = new FormData();
+    data.append("name", userData.userName);
+    data.append("password", oldPass);
+    data.append("newPassword", newPass);
+    const options = {
+      method: "POST",
+      body: data,
+    };
+    const data2 = new FormData();
+    data2.append("userName", userData.userName);
+    data2.append("newPassword", newPass);
+    fetch("http://localhost:3000/api/Users/Auth", options)
+      .then((response) => {
+        response.json().then((data) => {
+          if (!data) {
+            setError("Incorrect Password");
+          } else {
+            setShow(false);
+            fetch("http://localhost:3000/api/Users/ChangePassword", {
+              method: "POST",
+              body: data2,
+            }).then((response) => {
+              response.json().then((data) => {
+                console.log(data);
+              });
+            });
+          }
+        });
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  };
   function openMenu() {
     if (menu) {
       setMenu(false);
@@ -110,11 +150,6 @@ function Homepage() {
             {userData.name}
           </div>
           <div className="leftMenu">
-            <input
-              style={{ textAlign: "center" }}
-              className="searchBar"
-              placeholder="search"
-            />
             <div className="menuItems" hidden={menu}>
               <div id="dropItem">
                 <DropItem
@@ -130,23 +165,22 @@ function Homepage() {
                   }}
                   title={"Language"}
                   onClick={() => {
-                    alert("hi");
+                    alert("Saanu wi ptaa tenu hor koi language ni aundi ");
                   }}
                 />
                 <DropItem
                   bar={true}
                   idName={"dropItem2"}
-                  icon={
-                    "https://img.icons8.com/material-outlined/24/settings--v1.png"
-                  }
+                  icon={"https://img.icons8.com/ios-filled/100/key.png"}
                   style={{
                     fontSize: 13,
                     paddingTop: 11,
                     paddingBottom: 11,
                   }}
-                  title={"Settings"}
+                  title={"Change Password"}
                   onClick={() => {
-                    alert("hi");
+                    setMenu(true);
+                    setShow(true);
                   }}
                 />
                 <DropItem
@@ -246,6 +280,40 @@ function Homepage() {
             {currentPage == "Email" && <EmailPage userData={userData} />}
           </div>
         </div>
+        <ReactModal
+          onRequestClose={() => {
+            setShow(false);
+          }}
+          shouldCloseOnOverlayClick={true}
+          isOpen={show}
+          className="passModal"
+        >
+          <input
+            type="text"
+            placeholder="Old Password"
+            className="passInp"
+            onChange={(e) => {
+              setOldPass(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="New Password"
+            className="passInp"
+            onChange={(e) => {
+              setNewPass(e.target.value);
+            }}
+          />
+          <div className="errorMsg">{error ? error : <>&nbsp;</>}</div>
+          <button
+            className="submit"
+            onClick={() => {
+              authenticate();
+            }}
+          >
+            Submit
+          </button>
+        </ReactModal>
       </div>
     </>
   );

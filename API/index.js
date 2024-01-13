@@ -2,6 +2,7 @@ var Express = require("express");
 var MongoClient = require("mongodb").MongoClient;
 var cors = require("cors");
 const multer = require("multer");
+const { ObjectId } = require("mongodb");
 require("dotenv").config();
 
 var app = Express();
@@ -45,6 +46,19 @@ app.post("/api/Users/UpdateUser", multer().none(), (req, res) => {
         age: req.body.age,
         email: req.body.email,
         photoURL: req.body.photoURL,
+      },
+    },
+    (error, result) => {
+      res.send(result);
+    }
+  );
+});
+app.post("/api/Users/ChangePassword", multer().none(), (req, res) => {
+  database.collection("Users").updateOne(
+    { userName: req.body.userName },
+    {
+      $set: {
+        password: req.body.newPassword,
       },
     },
     (error, result) => {
