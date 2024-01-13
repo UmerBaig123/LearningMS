@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "./functions/useLocalStorage";
+import TaskPage from "./TaskPage";
 import { FaBars } from "react-icons/fa";
 import DropItem from "./components/DropItem";
 import EmailPage from "./EmailPage";
@@ -282,6 +283,7 @@ function Homepage() {
             )}
             {currentPage == "Courses" && <CoursesPage userData={userData} />}
             {currentPage == "Email" && <EmailPage userData={userData} />}
+            {currentPage == "Tasks" && <TaskPage userData={userData} />}
           </div>
         </div>
         <ReactModal
